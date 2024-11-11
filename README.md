@@ -2,7 +2,7 @@
 
 # Pediatric-Sleep-Apnea-SpO₂-Analysis
 
-This repository provides tools for preprocessing SpO₂ signals, organizing data for cross-validation, and evaluating deep learning models for assessing pediatric sleep apnea severity. The **SpO₂_Preprocessing_CHAT** notebook automates data downloads and structuring, while **ResNet_CNNBiLSTMAttention** facilitates model training and evaluation. Below are setup instructions, usage details, and file structure guidelines.
+This repository provides tools for preprocessing SpO₂ signals, organizing data for cross-validation, and evaluating deep learning models for assessing pediatric sleep apnea severity. The **SpO₂_Preprocessing_CHAT** notebook automates data downloads and structuring, while **ResNet_CNNBiLSTMAttention.ipynb** facilitates model training and evaluation. Below are setup instructions, usage details, and file structure guidelines.
 
 ---
 
