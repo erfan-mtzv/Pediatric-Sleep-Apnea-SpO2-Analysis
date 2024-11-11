@@ -1,9 +1,11 @@
-# Pediatric-Sleep-Apnea-SpO2-Analysis
+---
 
-This repository provides notebooks for preprocessing SpO₂ signals, organizing data for k-fold cross-validation, and evaluating deep learning models for pediatric sleep apnea severity assessment. The preprocessing notebook automates downloading and organizing data, while the model evaluation notebook enables the training and analysis of ResNet and CNN-BiGRU-Attention models. Detailed setup instructions, usage steps, and file structure guidance are below.
+# Pediatric-Sleep-Apnea-SpO₂-Analysis
 
---- 
- 
+This repository provides tools for preprocessing SpO₂ signals, organizing data for cross-validation, and evaluating deep learning models for assessing pediatric sleep apnea severity. The **SpO₂_Preprocessing_CHAT** notebook automates data downloads and structuring, while **ResNet_CNNBiLSTMAttention** facilitates model training and evaluation. Below are setup instructions, usage details, and file structure guidelines.
+
+---
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -19,46 +21,46 @@ This repository provides notebooks for preprocessing SpO₂ signals, organizing 
 
 ### Introduction
 
-This repository accompanies the research publication, ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9) (DOI: 10.1038/s41598-024-67729-9). It supports the analysis and evaluation of pediatric sleep apnea severity by applying deep learning models to segmented SpO₂ signals. The preprocessing workflow includes signal extraction, apnea and desaturation event detection, and segment preparation, while the model evaluation notebook provides interpretability through the CNN-BiGRU-Attention network’s attention layer.
+This repository supports the research publication ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9) (DOI: 10.1038/s41598-024-67729-9). It enables deep learning model evaluation for assessing pediatric sleep apnea severity using SpO₂ signals. The **SpO₂_Preprocessing_CHAT** notebook handles data extraction, event detection, and segmentation, while **ResNet_CNNBiLSTMAttention** evaluates ResNet and CNN-BiGRU-Attention models.
 
 ---
 
 ### File and Directory Structure
 
-**Files and directories required before running the notebooks**:
+**Required files and directories before running the notebooks**:
 
 1. **Demographic and Polysomnographic Information Files**:
    - `chat-baseline-dataset-0.12.0.csv`
    - `chat-followup-dataset-0.12.0.csv`
 
 2. **XML Folder** (in `./CHAT_dataset/XML`):
-   - Contains XML annotation files for apnea and oxygen desaturation events:
+   - Stores XML annotation files for apnea and oxygen desaturation events:
    ```plaintext
    XML/
-   ├── baseline/    # Baseline group annotation XML files
-   └── followup/    # Follow-up group annotation XML files
+   ├── baseline/    # Baseline group XML files
+   └── followup/    # Follow-up group XML files
    ```
 
-3. **CSV Folder** (created in your Google Drive or `./CHAT_dataset/CSV`):
-   - Stores CSV files with apnea and desaturation event details:
+3. **CSV Folder** (created in Google Drive or `./CHAT_dataset/CSV`):
+   - Saves apnea and desaturation event details in CSV format:
    ```plaintext
    CSV/
-   ├── ap_ends/     # Apnea event end times for each signal
-   ├── od_nadirs/   # Candidate oxygen desaturation nadir times for each signal
-   └── od_starts/   # Candidate oxygen desaturation start times for each signal
+   ├── ap_ends/     # Apnea event end times
+   ├── od_nadirs/   # Oxygen desaturation nadir times
+   └── od_starts/   # Oxygen desaturation start times
    ```
 
 4. **Processed Data Folder**:
-   - Contains numpy arrays with preprocessed data:
+   - Stores numpy arrays with preprocessed data:
    ```plaintext
    processed_data/
-   ├── AHIs.npy      # Array of AHI values per signal
-   ├── IDs.npy       # Array of subject IDs for signals
-   └── data.npy      # Array of 20-minute segmented SpO₂ signals with segment indexing
+   ├── AHIs.npy      # AHI values per signal
+   ├── IDs.npy       # Subject IDs
+   └── data.npy      # 20-minute SpO₂ segments with indexing
    ```
 
-5. **Folds Folder** (used for 3-fold cross-validation):
-   - Each fold contains training, validation, and test data arrays for model evaluation:
+5. **Folds Folder** (for 3-fold cross-validation):
+   - Each fold contains training, validation, and test data arrays for evaluation:
    ```plaintext
    Folds/
    ├── fold_1/
@@ -93,10 +95,9 @@ This repository accompanies the research publication, ["Deep learning-enabled an
    ```bash
    git clone https://github.com/username/repo_name.git
    ```
+2. Install required libraries
    
-2. Install necessary libraries
-   
-3. Update directory paths in notebooks as needed to ensure all files are correctly referenced.
+3. Ensure directory paths in notebooks are correctly updated to reference all files.
 
 ---
 
@@ -104,49 +105,52 @@ This repository accompanies the research publication, ["Deep learning-enabled an
 
 #### 1. Data Preprocessing
 
-**SpO2_preprocessing_CHAT Notebook**:
+**SpO₂_Preprocessing_CHAT Notebook**:
 
-- Open `SpO2_preprocessing_CHAT.ipynb` in Google Colab.
-- Set the **webpage number** (1-5) and **dataset group name** (baseline or followup) for each run.
-- Execute cells to download `.edf` files, identify apnea/desaturation events, and save processed data as `.npy` arrays in Google Drive:
-  - **AHI arrays**: Apnea-Hypopnea Index values for each signal
-  - **ID arrays**: Subject IDs for each signal
-  - **Data arrays**: 20-minute segmented SpO₂ signals with segment indexing to avoid mismatches
+- Open `SpO₂_Preprocessing_CHAT.ipynb` in Google Colab.
+- Set the **webpage number** (1-5) and **dataset group** (baseline or followup).
+- Execute cells to download `.edf` files, detect apnea/desaturation events, and save processed data in `.npy` format in Google Drive:
+  - **AHI arrays**: Apnea-Hypopnea Index values per signal.
+  - **ID arrays**: Subject IDs.
+  - **Data arrays**: 20-minute segmented SpO₂ signals.
 
 #### 2. Cross-Validation Preparation
 
-- After preprocessing all pages for both groups upload processed data and apply n-fold cross validation.
-The last cells of the SpO2_preprocessing_CHAT notebook can be used for merging `.npy` arrays into organized for applying n-fold cross-validation, which are then saved in the **Folds folder**.
+- After preprocessing all pages for both groups, upload processed data for cross-validation.
+- Merge `.npy` arrays into structured files for n-fold cross-validation in **Folds**.
 
 #### 3. Model Training and Evaluation
 
-The `ResNet_CNNBiLSTMAttention.ipynb` notebook implements:
+The `ResNet_CNNBiLSTMAttention.ipynb` notebook includes:
 
-- **ResNet** for feature extraction (TensorFlow)
-- **CNN-BiGRU-Attention** network for interpretability (TensorFlow and PyTorch)
+- **ResNet** for feature extraction (TensorFlow).
+- **CNN-BiGRU-Attention** for interpretability (TensorFlow and PyTorch).
 
 Steps:
 
 1. **Load Pretrained Weights**:
-   - Upload pretrained weights from `./Models` for each fold (e.g., `attention_model_fold_1_weights.h5`).
+   - Upload pretrained weights from `./Models` for each fold.
    
 2. **Evaluate Model Performance**:
-   - Assess performance on k-fold cross-validation data with metrics like accuracy, precision, and recall.
+   - Run evaluations on cross-validation data with metrics like accuracy, precision, and recall.
    
-3. **Attention Score Visualization** (CNN-BiGRU-Attention in PyTorch):
-   - Load `.pth` weights for the CNN-BiGRU-Attention model in PyTorch.
+3. **Attention Score Visualization**:
+   - Load `.pth` weights for CNN-BiGRU-Attention in PyTorch.
    - Extract and plot attention scores to observe model focus on SpO₂ signal features.
 
 ---
 
 ### Additional Notes
 
-- **Directory Management**: The notebook deletes intermediate `.edf` files post-processing to conserve space.
-- **Data Validation**: Preprocessing notebook validates apnea and desaturation event data quality.
-- **Attention Layer Insight**: Visualizations provide interpretability by highlighting areas of focus in SpO₂ signals during prediction.
+- **Data Validation**: Preprocessing validates apnea and desaturation event quality.
+- **Interpretability**: Attention visualizations offer insights into model focus on SpO₂ signal features.
 
-This repository is a complete toolkit for preparing SpO₂ data and evaluating deep learning models for pediatric sleep apnea research, with structured and interpretable model output.
+This repository is a complete toolkit for processing SpO₂ data and evaluating deep learning models for pediatric sleep apnea research with interpretable model output.
 
-**Repository Description**:   
-Repository for the published paper titled ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9) (DOI: 10.1038/s41598-024-67729-9). This repository includes data preprocessing and model evaluation pipelines, designed for SpO₂ signal processing, segmentation, and deep learning model applications for pediatric OSA severity assessment. 
- 
+---
+
+**Repository Description**:  
+Repository for ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9). It includes data preprocessing, segmentation, and deep learning model evaluation pipelines for SpO₂-based pediatric OSA severity assessment.
+
+---
+
