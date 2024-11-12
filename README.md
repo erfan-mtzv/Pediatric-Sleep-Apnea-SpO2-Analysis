@@ -1,5 +1,3 @@
----
-
 # Pediatric-Sleep-Apnea-SpO₂-Analysis
 
 This repository provides tools for preprocessing SpO₂ signals, organizing data for cross-validation, and evaluating deep learning models for assessing pediatric sleep apnea severity. The **SpO₂_Preprocessing_CHAT** notebook automates data downloads and structuring, while **ResNet_CNNBiLSTMAttention.ipynb** facilitates model training and evaluation. Below are setup instructions, usage details, and file structure guidelines.
@@ -21,7 +19,7 @@ This repository provides tools for preprocessing SpO₂ signals, organizing data
 
 ### Introduction
 
-This repository supports the research publication ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9) (DOI: 10.1038/s41598-024-67729-9). It enables deep learning model evaluation for assessing pediatric sleep apnea severity using SpO₂ signals. The **SpO₂_Preprocessing_CHAT** notebook handles data extraction, event detection, and segmentation, while **ResNet_CNNBiLSTMAttention** evaluates ResNet and CNN-BiGRU-Attention models.
+This repository supports the research publication ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9). It enables deep learning model evaluation for assessing pediatric sleep apnea severity using SpO₂ signals. The **SpO₂_Preprocessing_CHAT** notebook handles data extraction, event detection, and segmentation, while **ResNet_CNNBiLSTMAttention** evaluates ResNet and CNN-BiGRU-Attention models.
 
 ---
 
@@ -58,8 +56,11 @@ This repository supports the research publication ["Deep learning-enabled analys
    ├── IDs.npy       # Subject IDs
    └── data.npy      # 20-minute SpO₂ segments with indexing
    ```
+   - Each row in `data.npy` contains a 20-minute segment of a subject’s SpO₂ signal along with the subject index.
+   - Note: Subject IDs may appear in both baseline and follow-up groups if the subject participated in both studies, but each occurrence will have a unique subject index to track individual segments accurately.
 
-5. **Folds Folder** (for 3-fold cross-validation):
+5. **Folds Folder**:
+   - Contains preprocessed data used in this publication, organized for 3-fold cross-validation. You can download a zip file of this folder [here](https://drive.google.com/file/d/1xhFdQ8rZ2J5bxgW8FO3mt16NJWxNZHE-/view?usp=sharing).
    - Each fold contains training, validation, and test data arrays for evaluation:
    ```plaintext
    Folds/
@@ -93,11 +94,9 @@ This repository supports the research publication ["Deep learning-enabled analys
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/repo_name.git
+   git clone https://github.com/erfan-mtzv/Pediatric-Sleep-Apnea-SpO2-Analysis.git
    ```
-2. Install required libraries
-   
-3. Ensure directory paths in notebooks are correctly updated to reference all files.
+2. Ensure directory paths in notebooks are updated to correctly reference all files.
 
 ---
 
@@ -117,7 +116,7 @@ This repository supports the research publication ["Deep learning-enabled analys
 #### 2. Cross-Validation Preparation
 
 - After preprocessing all pages for both groups, upload processed data for cross-validation.
-- Merge `.npy` arrays into structured files for n-fold cross-validation in **Folds**.
+- Merge `.npy` arrays into structured files for n-fold cross-validation in the **Folds** folder.
 
 #### 3. Model Training and Evaluation
 
@@ -132,7 +131,7 @@ Steps:
    - Upload pretrained weights from `./Models` for each fold.
    
 2. **Evaluate Model Performance**:
-   - Run evaluations on cross-validation data with metrics like accuracy, precision, and recall.
+   - Run evaluations on cross-validation data with metrics like 4-class accuracy, RMSE, and R².
    
 3. **Attention Score Visualization**:
    - Load `.pth` weights for CNN-BiGRU-Attention in PyTorch.
@@ -142,7 +141,7 @@ Steps:
 
 ### Additional Notes
 
-- **Data Validation**: Preprocessing validates apnea and desaturation event quality.
+- Carefully follow the table of contents and comments in the notebooks for effective usage.
 - **Interpretability**: Attention visualizations offer insights into model focus on SpO₂ signal features.
 
 ![Attention Map of the CNN-BiGRU-Attention Layer](./Images/download.png)
@@ -153,6 +152,4 @@ This repository is a complete toolkit for processing SpO₂ data and evaluating 
 
 **Repository Description**:  
 Repository for ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9). It includes data preprocessing, segmentation, and deep learning model evaluation pipelines for SpO₂-based pediatric OSA severity assessment.
-
----
 
