@@ -81,11 +81,16 @@ This repository supports the research publication ["Deep learning-enabled analys
 6. **Models Folder**:
    - Contains pretrained weights for each fold:
    ```plaintext
-   Models/
-   ├── fold1_weights.h5
-   ├── fold2_weights.h5
-   ├── fold3_weights.h5
-   └── attention_weights.pth    # PyTorch weights for attention extraction
+      Models/
+      ├── TensorFlow/
+      │   ├── attention_model_fold_1_weights.h5
+      │   ├── attention_model_fold_2_weights.h5
+      │   ├── attention_model_fold_3_weights.h5
+      │   ├── resnet_model_fold_1_weights.h5
+      │   ├── resnet_model_fold_2_weights.h5
+      │   └── resnet_model_fold_3_weights.h5
+      └── PyTorch/
+          └── attention_model_pytorch_fold_2.pth     # PyTorch weights for attention extraction
    ```
 
 ---
