@@ -144,6 +144,9 @@ Steps:
 
 - **Data Validation**: Preprocessing validates apnea and desaturation event quality.
 - **Interpretability**: Attention visualizations offer insights into model focus on SpO₂ signal features.
+- 
+![Attention Map of the CNN-BiGRU-Attention Layer]
+(./Images/download.png)
 
 This repository is a complete toolkit for processing SpO₂ data and evaluating deep learning models for pediatric sleep apnea research with interpretable model output.
 
