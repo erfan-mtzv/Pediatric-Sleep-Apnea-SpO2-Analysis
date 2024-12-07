@@ -142,9 +142,9 @@ Steps:
 
 ### Additional Notes
 
-- **Data Validation**: Preprocessing validates apnea and desaturation event quality.
+- **Data Validation**: Preprocessing validates apnea and desaturation events
 - **Interpretability**: Attention visualizations offer insights into model focus on SpO₂ signal features.
-- 
+  
 ![Attention Map of the CNN-BiGRU-Attention Layer]
 (./Images/download.png)
 
