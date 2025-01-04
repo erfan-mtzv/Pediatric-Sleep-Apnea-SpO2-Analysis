@@ -164,7 +164,7 @@ This repository is a complete toolkit for processing SpO₂ data and evaluating 
 
 ---
 
-## PSG Variables in CHAT Dataset
+## PSG Variables from the CHAT Dataset for Validating the Labeling Process
 
 The following table summarizes key polysomnographic (PSG) variables related to sleep stages and apnea events from the CHAT dataset:
 
@@ -186,8 +186,6 @@ The following table summarizes key polysomnographic (PSG) variables related to s
 |                     | marop3       | Total number of mixed apneas in REM (non-supine), ≥ 3% desaturation, with/without arousal.     |
 |                     | manrbp3      | Total number of mixed apneas in NREM (supine), ≥ 3% desaturation, with/without arousal.        |
 |                     | manrop3      | Total number of mixed apneas in NREM (non-supine), ≥ 3% desaturation, with/without arousal.    |
-
----
 
 ---
 
