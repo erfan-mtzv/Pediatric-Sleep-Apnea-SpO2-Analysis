@@ -164,5 +164,32 @@ This repository is a complete toolkit for processing SpO₂ data and evaluating 
 
 ---
 
+## PSG Variables in CHAT Dataset
+
+The following table summarizes key polysomnographic (PSG) variables related to sleep stages and apnea events from the CHAT dataset:
+
+| **Category**         | **Variable** | **Description**                                                                                 |
+|---------------------|--------------|-------------------------------------------------------------------------------------------------|
+| **Obstructive Apneas** | oanbp3       | Total number of obstructive apneas in NREM (supine), ≥ 3% desaturation, with/without arousal.    |
+|                     | oanop3       | Total number of obstructive apneas in NREM (non-supine), ≥ 3% desaturation, with/without arousal.|
+|                     | oarbp3       | Total number of obstructive apneas in REM (supine), ≥ 3% desaturation, with/without arousal.     |
+|                     | oarop3       | Total number of obstructive apneas in REM (non-supine), ≥ 3% desaturation, with/without arousal. |
+| **Hypopneas**        | hnrbp3       | Total number of hypopneas in NREM (supine), > 50% flow reduction, ≥ 3% desaturation, with/without arousal. |
+|                     | hnrop3       | Total number of hypopneas in NREM (non-supine), > 50% flow reduction, ≥ 3% desaturation.         |
+|                     | hrembp3      | Total number of hypopneas in REM (supine), > 50% flow reduction, ≥ 3% desaturation.              |
+|                     | hrop3        | Total number of hypopneas in REM (non-supine), > 50% flow reduction, ≥ 3% desaturation.          |
+| **Central Apneas**   | carbp3       | Total number of central apneas in REM (supine), ≥ 3% desaturation, with/without arousal.        |
+|                     | carop3       | Total number of central apneas in REM (non-supine), ≥ 3% desaturation, with/without arousal.    |
+|                     | canbp3       | Total number of central apneas in NREM (supine), ≥ 3% desaturation, with/without arousal.       |
+|                     | canop3       | Total number of central apneas in NREM (non-supine), ≥ 3% desaturation, with/without arousal.   |
+| **Mixed Apneas**     | marbp3       | Total number of mixed apneas in REM (supine), ≥ 3% desaturation, with/without arousal.         |
+|                     | marop3       | Total number of mixed apneas in REM (non-supine), ≥ 3% desaturation, with/without arousal.     |
+|                     | manrbp3      | Total number of mixed apneas in NREM (supine), ≥ 3% desaturation, with/without arousal.        |
+|                     | manrop3      | Total number of mixed apneas in NREM (non-supine), ≥ 3% desaturation, with/without arousal.    |
+
+---
+
+---
+
 **Repository Description**:  
 Repository for ["Deep learning-enabled analysis of overnight peripheral oxygen saturation signals for pediatric obstructive sleep apnea severity assessment"](https://doi.org/10.1038/s41598-024-67729-9). It includes data preprocessing, segmentation, and deep learning model evaluation pipelines for SpO₂-based pediatric OSA severity assessment.
